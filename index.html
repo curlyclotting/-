@@ -5,30 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>洪涝灾害应急问答</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
 </head>
 <body>
+    <div class="progress-bar"></div>
     <div class="container">
         <header>
             <h1>洪涝灾害应急问答系统</h1>
-            <p>请输入您的问题，我们将为您提供专业的应急建议。</p>
+            <p>您的智能防灾助手</p>
+            <button id="themeToggle" class="theme-toggle">
+                <i class="fas fa-moon"></i>
+            </button>
         </header>
         <main>
-            <div class="input-area">
-                <label for="question">您的问题：</label>
-                <input type="text" id="question" placeholder="例如：如果发生洪涝灾害，如何应对？">
-                <button id="submit">提交问题</button>
+            <div class="sidebar left-sidebar">
+                <div class="sidebar-header">
+                    <h3>地理位置</h3>
+                </div>
+                <div id="map" class="map-container"></div>
             </div>
-            <div class="output-area">
-                <h2>回答：</h2>
-                <div id="answer" class="answer-box">等待您的问题...</div>
-                <h2>参考资料：</h2>
-                <ul id="contexts" class="context-list"></ul>
+            
+            <div class="main-content">
+                <div class="chat-container" id="chatContainer">
+                    <div class="message system">
+                        <div class="avatar">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="message-content">
+                            <p>您好！我是您的防灾助手。请问有什么可以帮您的吗？</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <input type="text" id="question" placeholder="输入您的问题，按回车发送">
+                        <button id="submit" class="send-button">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-suggestions">
+                        <span class="suggestion-chip">如何准备防汛物资？</span>
+                        <span class="suggestion-chip">暴雨天气注意事项</span>
+                        <span class="suggestion-chip">洪水预警信号</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar right-sidebar">
+                <div class="sidebar-header">
+                    <h3>参考资料</h3>
+                </div>
+                <div class="reference-content"></div>
             </div>
         </main>
         <footer>
-            <p>© 2025 洪涝灾害应急问答系统</p>
+            <p>© 2025 洪涝灾害应急问答系统 | 为了您的安全</p>
         </footer>
     </div>
+    <button class="scroll-to-bottom" id="scrollToBottom">
+        <i class="fas fa-arrow-down"></i>
+    </button>
     <script src="script.js"></script>
 </body>
 </html>
